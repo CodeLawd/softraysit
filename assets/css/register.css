@@ -1,0 +1,22 @@
+#wrapper {
+    background: linear-gradient(#10a1e5, #0a3e5c);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px
+}
+
+#register {
+    border-radius: 50px;
+    /* height: 90vh */
+}
+
+.welcome {
+    background-color: green
+}
+
+.create-account {
+    background-color: red;
+    padding: 5% 10%
+}
