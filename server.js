@@ -1,10 +1,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mailchimp = require('@mailchimp/mailchimp_marketing')
+const ejs = require('ejs')
 
 const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'));
+app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/index.html")
@@ -14,7 +16,7 @@ app.post('/', (req, res) => {
     const email = req.body.email;
 
 
-    // INTEGRATING MAILCHIMP API
+    //  INTEGRATING MAILCHIMP API
     mailchimp.setConfig({
         apiKey: "5897a554a7510fd1cc0538de6b310dc1-us19",
         server: "us19",
@@ -39,10 +41,12 @@ app.post('/', (req, res) => {
           if(response.status === 200) {
               res.sendFile(__dirname + "/success.html")
           } else {
-            res.sendFile(__dirname + "/success.html")
+            res.sendFile(__dirname + "/failure.html")
           }
         // response.status === 200 ?
-        } catch {}
+        } catch (err){
+            console.log(err)
+        }
     }
 
     run();
@@ -70,6 +74,17 @@ app.post('/register', (req, res) => {
 
 })
 
+app.get('/dashboard', (req, res) => {
+    res.sendFile(__dirname + "/dashboard.html")
+})
+
+app.get('/admin', (req, res) => {
+    res.sendFile(__dirname + "/admin.html")
+})
+
+app.get('/profile', (req, res) => {
+    res.sendFile(__dirname + "/profile.html")
+})
 
 app.listen(3000, () => {
     console.log('Server started at port 3000')
