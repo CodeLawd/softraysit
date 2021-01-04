@@ -2,19 +2,50 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mailchimp = require('@mailchimp/mailchimp_marketing')
 const ejs = require('ejs')
+const mongoose = require('mongoose');
+const {Schema, model} = mongoose;
 
 const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
+// SETTING UP THE DATABASE
+mongoose.connect('mongodb://localhost:27017/softraysDB', {useNewUrlParser: true, useUnifiedTopology: true});
+
+// DEFINING THE SCHEMA
+const registerSchema = new Schema({
+    fullName: {type: String, require: [true, "Your Full Name is required."]},
+    email: {
+        type: String,
+        validate: {
+            validator: function(v) {
+                    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                    return re.test(String(v).toLowerCase());
+            },
+            required: [true, "Email is not valid. Please enter a valid email."]
+        }
+    },
+    phone: String,
+    address: {type: String, required: [true, "Please enter your address"]},
+    nationality: {type: String, required: [true, "Please enter your nationality"]},
+    state: {type: String, required: [true, "Please enter your state of origin"]},
+    gender: {type: String, required: [true, "Please select a gender"]},
+    qualification: {type: String, required: [true, "Please enter a qualification"]},
+    course: {type: String, required: [true, "Please select a course"]},
+    price: {type: Number, required: [true]}
+})
+
+//  DEFINING A MODEL FOR THE SCHEMA
+const Student = model("Student", registerSchema);
+
+softrays = "Softrays Engineering Tech"
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + "/index.html")
+    res.render('index')
 })
 
 app.post('/', (req, res) => {
     const email = req.body.email;
-
 
     //  INTEGRATING MAILCHIMP API
     mailchimp.setConfig({
@@ -38,7 +69,7 @@ app.post('/', (req, res) => {
             status: "subscribed",
           });
         
-          if(response.status === 200) {
+          if(response.status === "subscribed") {
               res.sendFile(__dirname + "/success.html")
           } else {
             res.sendFile(__dirname + "/failure.html")
@@ -53,7 +84,7 @@ app.post('/', (req, res) => {
 })
 
 app.get('/register', (req, res) => {
-    res.sendFile(__dirname + '/register.html')
+    res.render("register")
 })
 
 app.post('/register', (req, res) => {
@@ -63,14 +94,26 @@ app.post('/register', (req, res) => {
     const address = req.body.address;
     const nationality = req.body.nationality;
     const state = req.body.state;
-    const male = req.body.male;
-    const female = req.body.female;
-    const ssce = req.body.ssce;
-    const bsc = req.body.bsc;
-    const pgrad = req.body.pgrad;
-    console.log(pgrad, male, state, fullName)
-    // const fullName = req.body.fullName;
-    // const fullName = req.body.fullName;
+    const gender = req.body.gender;
+    const qualification = req.body.qualification;
+    const course = req.body.course;
+    const price = req.body.price
+
+    const newStudent = new Student({
+        fullName: fullName,
+        email: email,
+        phoneNumber: phoneNumber,
+        address: address,
+        nationality: nationality,
+        state: state,
+        gender: gender,
+        qualification: qualification,
+        course: course,
+        price: price
+    })
+
+    newStudent.save()
+
 
 })
 
@@ -86,6 +129,19 @@ app.get('/profile', (req, res) => {
     res.sendFile(__dirname + "/profile.html")
 })
 
+app.get('/success', (req, res) => {
+    res.sendFile(__dirname + "/success.html")
+})
+
+app.get('/login', (req, res) => {
+    res.sendFile(__dirname + "/login.html")
+})
+
+app.get('/forget-password', (req, res) => {
+    res.sendFile(__dirname + "/forget.html")
+})
+
 app.listen(3000, () => {
     console.log('Server started at port 3000')
 })
+

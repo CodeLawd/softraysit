@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet" />
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/owl.carousel/assets/owl.carousel.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+
+    <!-- Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/register.css" />
+
+    <style>
+      body {
+        background-image: url("assets/img/animated-shapes.svg");
+        background-size: cover;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main id="wrapper">
+      <section id="register">
+        <div class="row">
+          <div class="col-lg-5 col-md-5 welcome">
+            <div>
+              <h1>Welcome Back</h1>
+              <p style="padding: 20px 0">
+                To keep connected with us, please login with your personal info
+              </p>
+              <button
+                id="switch"
+                class="btn btn-lg btn-outline-light btn-block switch"
+              >
+                SIGN IN
+              </button>
+
+              <img 
+              width="200px"
+              height="auto"
+              style="margin-top: 50px"
+              src="assets/img/softrays 2.png" alt="logo">
+            </div>
+          </div>
+          <div
+            class="col-lg-7 col-md-7 create-account"
+            style="overflow-y: scroll"
+          >
+            <form action="/register" method="POST">
+              <div style="text-align: center">
+                <h1>Application Form</h1>
+                <p>Kindly fill the form below.</p>
+              </div>
+
+              <div class="form-group icon-group">
+                <i class="icofont-user-alt-3 icon"></i>
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Full Name"
+                  name="fullName"
+                />
+              </div>
+              <div class="form-group icon-group">
+                <i class="icofont-envelope icon"></i>
+                <input
+                  class="form-control"
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                />
+              </div>
+              <div class="form-group icon-group">
+                <i class="ri-phone-fill icon"></i>
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Phone Number"
+                  name="phoneNumber"
+                />
+              </div>
+              <div class="form-group icon-group">
+                <i class="icofont-location-pin icon"></i>
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Contact Address"
+                  name="address"
+                />
+              </div>
+              <div class="form-group icon-group">
+                <i class="icofont-flag icon"></i>
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Nationality"
+                  name="nationality"
+                />
+              </div>
+              <div class="form-group icon-group">
+                <i class="ri-flag-fill icon"></i>
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="State of Origin"
+                  name="state"
+                />
+              </div>
+              <div class="form-group">
+                <label for="" class="label">Gender</label>
+                <select name="gender" class="form-control section">
+                  <option>---</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="" class="label">Qualification</label>
+                <select name="qualification" class="form-control section">
+                  <option>---</option>
+                  <option>SSCE</option>
+                  <option>OND</option>
+                  <option>BSc</option>
+                  <option>Post Graduate</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="" class="label">Course</label>
+                <select
+                  id="courses"
+                  name="course"
+                  onchange="changePrice()"
+                  class="form-control section"
+                >
+                  <option value="nil">---</option>
+                  <option value="excel">
+                    Advance Certification in Microsoft Excel
+                  </option>
+                  <option value="solidworks">Advance Certification in Solid Works</option>
+                  <option value="autocad">Advance Certification in AutoCAD (2D&3D)</option>
+                  <option value="revit">Advance Certification in Revit (2D&3D)</option>
+                  <option value="pythonDS">
+                    Advance Certification in Python (Data Science)
+                  </option>
+                  <option value="java">Advance Certification in Java Programming</option>
+                  <option value="cyber">Advance Certification in Cyber Security</option>
+                  <option value="aDmarketing">Advance Certification in Digital Marketing</option>
+                  <option value="itc">
+                    Certification in Information Technology and Computing
+                  </option>
+                  <option value="adobe">Certification in Adobe Photoshop</option>
+                  <option value="engineering">
+                    Computer Systems Engineering A+ and Networking N+ (CSE)
+                    &nbsp; &nbsp;
+                  </option>
+                  <option value="coreldraw">
+                    Certification in CorelDRAW and Digital Printing
+                  </option>
+                  <option value="python">Certificate in Python Programming</option>
+                  <option value="dmarketing">Certificate in Digital Marketing</option>
+                  <option value="motion">Certificate in Motion Graphics</option>
+                  <option value="ccna">CCNA (CISCO CERTIFICATION)</option>
+                  <option value="ccnp">CCNP (CISCO CERTIFICATION)</option>
+                  <option value="spss">Data Analysis Using SPSS</option>
+                  <option value="mini">Mini Importation Training</option>
+                  <option value="mobile">Mobile App Development</option>
+                  <option value="ui/ux">User Interface/User Experience (UI/UX) Desgin</option>
+                  <option value="frontend">Web Design (Front End)</option>
+                  <option value="fullstack">Web Development (Full Stack)</option>
+                  <option value="siwes">
+                    Student Industrial Work Experience Scheme (SIWES)
+                  </option>
+                </select>
+
+                <div class="form-group icon-group">
+                  <label for="">Price</label>
+                  <input
+                    id="price"
+                    type="text"
+                    style="margin: 20 0 0 0; padding-left: 10px"
+                    class="form-control price"
+                    name="price"
+                    value="0"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <button
+                name="submit"
+                class="btn btn-block btn-primary btn-lg"
+                type="submit"
+              >
+                Continue
+              </button>
+              <!-- <div class="space"></div> -->
+            </form>
+
+            <!-- CREATE PASSWORD SECTION -->
+            <!-- <form action="/register" method="POST" id="form-2" class="display">
+                        <h2>Create your password</h2>
+                        <div class="form-group icon-group">
+                            <i class="icofont-lock icon"></i>
+                            <input id="password" type="password" class="form-control" placeholder="Password">
+                            <i id="togglePassword" class="ri-eye-fill icon2"></i>
+                            <small>Hello people</small> 
+                        </div>
+                        <div class="form-group icon-group">
+                            <i class="icofont-lock icon"></i>
+                            <input id="anotherPassword" type="password" class="form-control"
+                                placeholder="Confirm Password">
+                            <i id="anotherTogglePassword" class="ri-eye-fill icon2"></i>
+                        </div>
+                        <button type="submit" class="btn btn-block btn-dark btn-lg"> Submit Form</button>
+                    </form> -->
+            <!-- CREATE PASSWORD SECTION -->
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
