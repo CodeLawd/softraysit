@@ -1,4 +1,26 @@
 // Price Section
+
+document.getElementById("switch").addEventListener("click", function(){
+  document.getElementById("second").classList.remove("display")
+  document.getElementById("first").classList.add("display")
+})
+
+document.getElementById("switch2").addEventListener("click", function(){
+  document.getElementById("second").classList.add("display")
+  document.getElementById("third").classList.remove("display")
+})
+
+document.getElementById("back-switch").addEventListener("click", function(){
+  document.getElementById("second").classList.add("display")
+  document.getElementById("first").classList.remove("display")
+})
+
+document.getElementById("back-switch2").addEventListener("click", function(){
+  document.getElementById("third").classList.add("display")
+  document.getElementById("second").classList.remove("display")
+})
+
+
 $(".sworks").on("click", function () {
   $("#price").removeClass("display");
 });
@@ -31,29 +53,28 @@ tooglePassword();
 
 // TogglePage
 function togglePage() {
-  $("#show").click(() => {
-    $("#form-1").slideDown(100).addClass("display");
-    $("#form-2").toggleClass("display");
+  $("#switcher").click(() => {
+    $("#first").addClass("display");
+    $("#second").removeClass("display");
   });
+  
 }
 togglePage();
 
 // SWITCH PAGES
 
-$("#switch").click(() => {
-  $("#login").removeClass("display");
-  $("#register").addClass("display");
-});
+document.getElementById("one").addEventListener("click", function(){
+  document.getElementById("second").classList.remove("display")
+  document.getElementById("first").classList.add("display")
+  alert("hello")
+})
 
-$("#switch2").click(() => {
-  $("#login").addClass("display");
-  $("#register").removeClass("display");
-});
 
-$("#switch3").click(() => {
-  $("#login").addClass("display");
-  $("#forgot-password").removeClass("display");
-});
+
+
+
+
+
 
 // PRICE
 

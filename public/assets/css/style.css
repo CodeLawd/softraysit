@@ -5,6 +5,9 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+  margin: -40px;
+  /* padding: 20px; */
+  overflow-x: hidden
 }
 
 a {

@@ -54,6 +54,13 @@
     overflow-y: scroll;
 }
 
+.login-account {
+    background-color: #fff;
+    padding: 4% 4%;
+    height: 550px;
+    /* overflow-y: scroll; */
+}
+
 .form-group {
     padding: 10px 0;
 }
@@ -93,7 +100,7 @@
 }
 
 .display {
-    display: none;
+    display:none !important
 }
 
 .next {
